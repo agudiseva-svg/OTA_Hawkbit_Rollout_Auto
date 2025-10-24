@@ -350,13 +350,24 @@ def get_firmware_history(session, target_id):
 
     print(f"\nFirmware History for Target: {target_id}")
     print("-" * 50)
+
     for act in actions:
         ds = act.get("distributionSet", {})
         ds_name = ds.get("name", "Unknown")
         ds_version = ds.get("version", "N/A")
-        exec_status = act.get("status", {}).get("execution", "N/A")
+
+        # Handle cases where 'status' is either a dict or a string
+        raw_status = act.get("status", {})
+        if isinstance(raw_status, dict):
+            exec_status = raw_status.get("execution", "N/A")
+        elif isinstance(raw_status, str):
+            exec_status = raw_status
+        else:
+            exec_status = "N/A"
+
         start_time = act.get("createdAt", "N/A")
         print(f"{ds_name} ({ds_version}) - {exec_status} | Started: {start_time}")
+
     print("-" * 50)
 
 # ----------------------------------------------------------------------
@@ -413,7 +424,7 @@ def main():
         print(f"Target: {target}")
         get_assigned_ds(session, target)
         get_installed_ds(session, target)
-        get_firmware_history(session, target)
+        #get_firmware_history(session, target)
         print("-" * 50)
 
 
