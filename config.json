@@ -1,0 +1,26 @@
+{
+  "hawkbit": {
+    "url": "https://ota.watford.ienso-dev.com",
+    "username": "admin",
+    "password": "f3$SE23FD@123**#"
+  },
+  "sequences": {
+    "1.0": [
+      { "name": "Whisker-Edge", "version": "1.5.8" },
+      { "name": "watford-ai-app_0.0.41", "version": "0.0.41" },
+      { "name": "bobcat-1.2.2-1220+dbg", "version": "1.2.2-1220+dbg" }
+    ],
+    "1.1": [
+      { "name": "whisker-edge", "version": "1.5.9" },
+      { "name": "watford-ai-app_0.0.41", "version": "0.0.41" },
+      { "name": "bobcat-1.2.2-1220+dbg", "version": "1.2.2-1220+dbg" }
+    ],
+    "0.9": [
+      { "name": "watford-ai-app", "version": "0.0.40" }
+    ]
+  },
+  "polling": {
+    "interval": 30,
+    "timeout": 1800
+  }
+}
